@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Biometric System</title>
+    <style>
+        body{ font-family: Arial,sans-serif;background: #1e1e1e;color: #d4d4af;padding: 20px;}
+        h1{font-size: 18px;margin-bottom: 12px;}
+        video{width: 100%;max-width: 480px;border: 2px solid #444; border-radius: 8px; background: #000;}
+        button{margin-top: 12px; padding:  8px 16px; font-size: 14px;border: none; border-radius:  6px; background: #077770;
+        color: #fff; cursor: pointer;}
+        button.hover{background: #14a3ab; }
+    </style>
+</head>
+<body>
+    <hi>face biomertic</hi>
+    <video id ="video" autoplay muted playsinline></video>
+        <br />
+        <button id="startBtn">Start Camera</button>
+        <p id="msg"></p>
+            <script>
+                const video = document.getElementById('video');
+                const startBtn = document.getElementById('startBtn');
+                const msg = document.gerElementById('msg');
+                
+                startBtn.addEventListener('click',async() => {
+                    try{
+                        const stream = await navigator.mediadevices.getUserMedia({video: true});
+                        video.scrObject=stream;
+                        msg.innerText ="Camera ON";
+                    } catch (err){
+                        alert('error accessing camera: ' + err.message);
+                    }
+                })  
+            </script>
+</body>
+</html>
